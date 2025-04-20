@@ -1,5 +1,7 @@
 package utils;
 
+import pacman.PacmanBoard;
+
 public interface Commons {
     
 	public static final int WIDTH = 300;
@@ -15,9 +17,17 @@ public interface Commons {
 	public static final int BREAKOUT_STATE_SIZE = 7;
 	public static final int BREAKOUT_NUM_ACTIONS = 2;
 	
+	public static final int PACMAN_NUM_ACTIONS = 4;
+	public static final int PACMAN_STATE_SIZE = PacmanBoard.N_BLOCKS * PacmanBoard.N_BLOCKS * 2 + 2 + PacmanBoard.MAX_GHOSTS * 2;
+	
 	public static final int INPUT_DIM = 7;
 	public static final int HIDDEN_DIM = 5;
 	public static final int OUTPUT_DIM = 2;
-		
+	
+	public static final int INPUT_DIM_PAC = PACMAN_STATE_SIZE;
+	public static final int HIDDEN_DIM_PAC = 7;
+	public static final int OUTPUT_DIM_PAC = 5;
+	
 	public static final int BREAKOUT_SEED = 296;
+	public static final int PACMAN_SEED = 152801;
 }
