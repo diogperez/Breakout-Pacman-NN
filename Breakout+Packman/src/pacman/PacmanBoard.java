@@ -14,11 +14,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Random;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
 import utils.Commons;
 import utils.GameController;
 
@@ -70,7 +68,7 @@ public class PacmanBoard extends JPanel implements ActionListener {
 	private int pacman_x, pacman_y, pacmand_x, pacmand_y;
 	private int req_dx, req_dy, view_dx, view_dy;
 
-	private int[] state = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+	private final int[] state = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 			1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 			1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1,
 			1, 1, 1, 1, -1, 1, 1, 1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, 1, -1, 1, 1, 1, 1,
@@ -94,8 +92,8 @@ public class PacmanBoard extends JPanel implements ActionListener {
 	private int currentSpeed = 3;
 	private short[] screenData;
 	private Timer timer;
-	private GameController controller;
-	private boolean withGui;
+	private final GameController controller;
+	private final boolean withGui;
 
 	private int steps = 0;
 

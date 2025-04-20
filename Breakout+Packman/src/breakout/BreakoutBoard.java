@@ -11,14 +11,9 @@ import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.util.Arrays;
 import java.util.Random;
-
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
 import utils.Commons;
 import utils.GameController;
 
@@ -28,15 +23,15 @@ public class BreakoutBoard extends JPanel {
 	public static final int RIGHT = 2;
 
 	private Timer timer;
-	private String message = "Game Over";
+	private final String message = "Game Over";
 	private Ball ball;
 	private Paddle paddle;
 	private Brick[] bricks;
 	private boolean inGame = true;
 
 	private GameController controller;
-	private boolean withGui;
-	private Random r = new Random();
+	private final boolean withGui;
+	private final Random r = new Random();
 	private double time;
 	private int kills;
 
@@ -111,7 +106,7 @@ public class BreakoutBoard extends JPanel {
 		return kills * 100000 + 100000 - time;
 	}
 
-	private double[] getState() {                                        // Alterado para double[]
+	private double[] getState() {                                        
 		double[] state = new double[Commons.BREAKOUT_STATE_SIZE];
 
 		state[0] = ball.getX();

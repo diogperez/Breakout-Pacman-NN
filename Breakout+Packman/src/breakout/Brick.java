@@ -27,8 +27,4 @@ public class Brick extends Sprite {
     boolean isDestroyed() {
         return destroyed;
     }
-
-    void setDestroyed(boolean val) {
-        destroyed = val;
-    }
 }

@@ -35,7 +35,7 @@ public class GeneticAlgorithm {
 				newGeneration[j+1] = children[1];
 			}
 
-			newGeneration[0] = population[0];         // Mantém o melhor individuo
+			newGeneration[0] = population[0];         
 			createNewPopulation(newGeneration);
 			System.out.println("Geração: " + i + "\n" + "Melhor Fitness: " + population[0].getFitness());
 		}
@@ -72,12 +72,12 @@ public class GeneticAlgorithm {
         double[] child1 = new double[parent1Genes.length];
         double[] child2 = new double[parent1Genes.length];
         
-        for(int i = 0; i < crossoverPoint; i++) {                 //Percorre o array até ao ponto
+        for(int i = 0; i < crossoverPoint; i++) {                 
         	child1[i] = parent1Genes[i];
             child2[i] = parent2Genes[i];
         }
         
-        for (int i = crossoverPoint; i < parent1.getNeuralNetwork().length; i++) {     //Percorre a partir do ponto
+        for (int i = crossoverPoint; i < parent1.getNeuralNetwork().length; i++) {     
             child1[i] = parent2Genes[i];
             child2[i] = parent1Genes[i];
         }
@@ -99,7 +99,7 @@ public class GeneticAlgorithm {
 	
 	private void generatePopulation() {
 		for (int i = 0; i < POPULATION_SIZE; i++) {
-			population[i] = new FeedForwardNeuralNetwork(Commons.INPUT_DIM,Commons.HIDDEN_DIM,Commons.OUTPUT_DIM);    // 7 input, 1 hidden, 2 output
+			population[i] = new FeedForwardNeuralNetwork(Commons.INPUT_DIM,Commons.HIDDEN_DIM,Commons.OUTPUT_DIM);    
 		}
 	}
 }

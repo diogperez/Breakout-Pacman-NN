@@ -5,9 +5,9 @@ import utils.GameController;
 
 public class FeedForwardNeuralNetwork implements GameController, Comparable<FeedForwardNeuralNetwork> {
 	
-	private int inputDim;
-	private int hiddenDim;
-	private int outputDim;
+	private final int inputDim;
+	private final int hiddenDim;
+	private final int outputDim;
 	private double[][] hiddenWeights;
 	private double[] hiddenBiases;
 	private double[][] outputWeights;
@@ -19,7 +19,7 @@ public class FeedForwardNeuralNetwork implements GameController, Comparable<Feed
 		this.outputDim = outputDim;
 		initializeParameters();
 	}
-	
+
 	public FeedForwardNeuralNetwork(int inputDim, int hiddenDim, int outputDim, double[] values) {
 		this.inputDim = inputDim;
 		this.hiddenDim = hiddenDim;
@@ -56,8 +56,8 @@ public class FeedForwardNeuralNetwork implements GameController, Comparable<Feed
 			outputBiases[i] = values[index++];
 		}
 	}
-	
-	public void initializeParameters() {
+
+	private void initializeParameters() {
 		
 		double min = -0.1;
 		double max = 0.1;
@@ -86,20 +86,18 @@ public class FeedForwardNeuralNetwork implements GameController, Comparable<Feed
 			outputBiases[i] = min + Math.random() * (max - min);
 		}
 	}
-	
+
 	@Override
 	public int nextMove(double[] currentState) {
 		double[] output = forward(currentState);
-		//System.out.println("Output array: " + Arrays.toString(output));
 		if (output[0] > output[1]) {
 			return BreakoutBoard.LEFT;
 		} else {
 			return BreakoutBoard.RIGHT;
 		}
 	}
-	
+
 	public double[] forward(double[] inputValues) {
-		//System.out.println("input: " + Arrays.toString(inputValues));
 		double[] hiddenLayerOutput = new double[hiddenDim];
 		for(int i = 0; i < hiddenDim; i++) {
 			double sum = 0.0;
@@ -120,7 +118,7 @@ public class FeedForwardNeuralNetwork implements GameController, Comparable<Feed
 		
 		return output;
 	}
-	
+
 	public double[] getNeuralNetwork() {
 		double[] neuralNetwork = new double[(inputDim * hiddenDim) + hiddenDim + (hiddenDim * outputDim) + outputDim];
 		
@@ -148,23 +146,11 @@ public class FeedForwardNeuralNetwork implements GameController, Comparable<Feed
 		
 		return neuralNetwork;
 	}
-	
+
 	private double sigmoid(double x) {
 		return 1 / (1 + Math.exp(-x));
-	}
+	}	
 	
-	@Override
-	public String toString() {
-		String result = "Neural Network:\n";
-		String biasOutput = "Ouput biases: \n";
-		for (int i = 0; i < outputDim; i++) {
-			biasOutput += " bias ouput"+i+": " + outputBiases[i] + "\n";
-		}
-		result+= biasOutput;
-		
-		return result;
-	}
-
 	public int getInputDim() {
 		return this.inputDim;
 	}
@@ -176,7 +162,7 @@ public class FeedForwardNeuralNetwork implements GameController, Comparable<Feed
 	public int getOutputDim() {
 		return this.outputDim;
 	}
-
+	
 	@Override
 	public int compareTo(FeedForwardNeuralNetwork o) {
 		return Double.compare(o.getFitness(), this.getFitness());
@@ -186,6 +172,19 @@ public class FeedForwardNeuralNetwork implements GameController, Comparable<Feed
 		BreakoutBoard breakoutBoard = new BreakoutBoard(this, false, Commons.BREAKOUT_SEED);
 		breakoutBoard.runSimulation();
 		return breakoutBoard.getFitness();
+	}
+
+
+	@Override
+	public String toString() {
+		String result = "Neural Network:\n";
+		String biasOutput = "Ouput biases: \n";
+		for (int i = 0; i < outputDim; i++) {
+			biasOutput += " bias ouput"+i+": " + outputBiases[i] + "\n";
+		}
+		result+= biasOutput;
+		
+		return result;
 	}
 	
 }
